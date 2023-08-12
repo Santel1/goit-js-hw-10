@@ -40,8 +40,11 @@ function createMurkupSelect(arr) {
     .join('');
 }
 
-function createMurkupCatsInfo(arr) {
-  return arr
+function createMurkupCatsInfo(data) {
+  data.url;
+  data.breeds[0].name;
+
+  return data
     .map(
       ({ url, temperament, description, name }) =>
         `<img src="${url}" alt="${name}" class="cat-image" width="400">
