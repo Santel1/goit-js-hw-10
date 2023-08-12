@@ -15,7 +15,7 @@ export function fetchBreeds() {
       refs.breedSelect.innerHTML = createMurkupSelect(resp.data);
       // console.log(createMurkup(resp.data));
 
-      console.log(resp);
+      // console.log(resp);
     })
     .catch(err => {
       console.log(err);
@@ -27,7 +27,7 @@ export function fetchCatByBreed(breedId) {
     .get(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
     .then(resp => {
       refs.catInfo.innerHTML = createMurkupCatsInfo(resp.data);
-      console.log(createMurkupCatsInfo(resp.data));
+      console.log(resp);
     })
     .catch(err => {
       console.log(err);
@@ -43,12 +43,11 @@ function createMurkupSelect(arr) {
 function createMurkupCatsInfo(arr) {
   return arr
     .map(
-      ({ temperament, description, name, url }) =>
-        `<img src = "${url}" alt = "${name}" class="cat-image" width ="400">
-    <p>${name}</p>
-    <p>${description}</p>
-    <p>${temperament}</p>
-    `
+      ({ url, temperament, description, name }) =>
+        `<img src="${url}" alt="${name}" class="cat-image" width="400">
+        <p>${name}</p>
+        <p>${description}</p>
+        <p>${temperament}</p>`
     )
     .join('');
 }
