@@ -20,7 +20,11 @@ export function fetchBreeds() {
   axios
     .get('https://api.thecatapi.com/v1/breeds')
     .then(resp => {
-      refs.breedSelect.innerHTML = createMurkupSelect(resp.data);
+      //   refs.breedSelect.innerHTML = createMurkupSelect(resp.data);
+      refs.breedSelect.insertAdjacentHTML(
+        'beforeend',
+        createMurkupSelect(resp.data)
+      );
       slim();
     })
     .catch(err => {
